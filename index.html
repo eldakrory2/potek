@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+
+<html dir="rtl" lang="ar">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>متجر علي بابا أحمد الدكروري</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>متجر علي بابا أحمد الدكروري</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<style>
     :root {
       --primary-color: #d32f2f; /* أحمر داكن */
       --secondary-color: #f44336; /* أحمر */
@@ -853,174 +854,171 @@
   </style>
 </head>
 <body>
-  <header>
-    <h1>🛍️ متجر علي بابا أحمد الدكروري للملابس والأحذية 🥿</h1>
-  </header>
-  <nav>
-    <a href="#men">الرجالي</a>
-    <a href="#women">الحريمي</a>
-    <a href="#kids">الأولاد</a>
-    <a href="#slide" >💾 تواصل معنا</a>
-    <a href="#clock">الساعة</a>
-    <a href="https://www.youtube.com/@ahmed-eldakrory" id="saveBtn">💾 قناة اليوتيوب</a>
-    <a href="https://www.facebook.com/profile.php?id=61569878923724" id="loadBtn">🔄 افيس بوك</a>
-  </nav>
-
-  <!-- سلة التسوق المحسنة -->
-  <div class="cart-icon" id="cartIcon">
+<header>
+<h1>🛍️ متجر علي بابا أحمد الدكروري للملابس والأحذية 🥿</h1>
+</header>
+<nav>
+<a href="#men">الرجالي</a>
+<a href="#women">الحريمي</a>
+<a href="#kids">الأولاد</a>
+<a href="#slide">💾 تواصل معنا</a>
+<a href="#clock">الساعة</a>
+<a href="https://www.youtube.com/@ahmed-eldakrory" id="saveBtn">💾 قناة اليوتيوب</a>
+<a href="https://www.facebook.com/profile.php?id=61569878923724" id="loadBtn">🔄 افيس بوك</a>
+</nav>
+<!-- سلة التسوق المحسنة -->
+<div class="cart-icon" id="cartIcon">
     🛒
     <div class="badge" id="cartBadge">0</div>
-  </div>
-  
-  <div class="cart-container" id="cartContainer">
-    <div class="cart-title">🛒 سلة التسوق</div>
-    <div class="cart-items" id="cartItems">
-      <!-- العناصر المضافة إلى السلة تظهر هنا -->
-    </div>
-    <div class="cart-total">المجموع: <span id="cartTotal">0</span> جنيه</div>
-    <div class="cart-controls">
-      <select id="productSelect">
-        <option value="">اختر منتج للحذف</option>
-      </select>
-      <button class="cart-btn" id="removeBtn">🗑️ حذف</button>
-    </div>
-    <button class="cart-btn" id="invoiceBtn">🧾 عرض الفاتورة</button>
-  </div>
-
-  <!-- قسم الرجالي -->
-  <section class="section" id="men">
-    <h2>👔 قسم الملابس الرجالي</h2>
-    
-    <div class="products" id="menProducts">
-      <!-- المنتجات ستضاف هنا تلقائيا -->
-    </div>
-  </section>
-
-  <!-- قسم الحريمي -->
-  <section class="section" id="women">
-    <h2>👗 قسم الملابس الحريمي</h2>
-    
-    <div class="products" id="womenProducts">
-      <!-- المنتجات ستضاف هنا تلقائيا -->
-    </div>
-  </section>
-
-  <!-- قسم الأولاد -->
-  <section class="section" id="kids">
-    <h2>🧒 قسم ملابس الأولاد</h2>
-    
-    <div class="products" id="kidsProducts">
-      <!-- المنتجات ستضاف هنا تلقائيا -->
-    </div>
-  </section>
-
-  <!-- قسم الساعة -->
-  <section class="section" id="clock">
-    <h2>🕰️ الساعة ومواقيت الصلاة</h2>
-    <div id="time">جارٍ تحميل الساعة...</div>
-  </section>
-
-  <!-- معرض الصور -->
-  <div id="galleryModal" class="gallery-modal">
-    <span class="gallery-close">&times;</span>
-    <div class="gallery-counter" id="galleryCounter"></div>
-    <div class="gallery-content">
-      <img id="galleryImage" class="gallery-img" src="">
-      <div class="gallery-desc" id="galleryDesc"></div>
-    </div>
-    <div class="gallery-nav">
-      <button class="gallery-btn" id="prevBtn">&#10094;</button>
-      <button class="gallery-btn" id="nextBtn">&#10095;</button>
-    </div>
-  </div>
-
-  <!-- نموذج الفاتورة -->
-  <div id="invoiceModal" class="invoice-modal">
-    <div class="invoice-content">
-      <span class="close-invoice">&times;</span>
-      <div class="invoice-header">
-        <h2>فاتورة شراء</h2>
-        <p>متجر علي بابا أحمد الدكروري</p>
-        <p id="invoiceDate"></p>
-        <p id="invoiceNumber"></p>
-      </div>
-      <table class="invoice-table">
-        <thead>
-          <tr>
-            <th>رقم المنتج</th>
-            <th>اسم المنتج</th>
-            <th>السعر</th>
-            <th>الكمية</th>
-            <th>المجموع</th>
-          </tr>
-        </thead>
-        <tbody id="invoiceItems">
-          <!-- عناصر الفاتورة تظهر هنا -->
-        </tbody>
-      </table>
-      <div class="invoice-summary">
-        <p>المجموع الكلي: <span id="invoiceTotal">0</span> جنيه</p>
-      </div>
-      <button class="print-invoice" onclick="printInvoice()">
-        <span>🖨️</span> طباعة الفاتورة
+</div>
+<div class="cart-container" id="cartContainer">
+<div class="cart-title">🛒 سلة التسوق</div>
+<div class="cart-items" id="cartItems">
+<!-- العناصر المضافة إلى السلة تظهر هنا -->
+</div>
+<div class="cart-total">المجموع: <span id="cartTotal">0</span> جنيه</div>
+<div class="cart-controls">
+<select id="productSelect">
+<option value="">اختر منتج للحذف</option>
+</select>
+<button class="cart-btn" id="removeBtn">🗑️ حذف</button>
+</div>
+<button class="cart-btn" id="invoiceBtn">🧾 عرض الفاتورة</button>
+</div>
+<!-- قسم الرجالي -->
+<section class="section" id="men">
+<div style="text-align:center; margin-bottom: 10px;">
+<input onkeyup="filterProducts('men', this.value)" placeholder="🔍 ابحث عن منتج في قسم الرجالي" style="padding: 12px; width: 90%; max-width: 400px; border-radius: 8px; border: none; font-size: 1.1em; box-shadow: var(--shadow); color: #000;" type="text"/>
+</div>
+<h2>👔 قسم الملابس الرجالي</h2>
+<div class="products" id="menProducts">
+<!-- المنتجات ستضاف هنا تلقائيا -->
+</div>
+</section>
+<!-- قسم الحريمي -->
+<section class="section" id="women">
+<div style="text-align:center; margin-bottom: 10px;">
+<input onkeyup="filterProducts('women', this.value)" placeholder="🔍 ابحث عن منتج في قسم الحريمي" style="padding: 12px; width: 90%; max-width: 400px; border-radius: 8px; border: none; font-size: 1.1em; box-shadow: var(--shadow); color: #000;" type="text"/>
+</div>
+<h2>👗 قسم الملابس الحريمي</h2>
+<div class="products" id="womenProducts">
+<!-- المنتجات ستضاف هنا تلقائيا -->
+</div>
+</section>
+<!-- قسم الأولاد -->
+<section class="section" id="kids">
+<div style="text-align:center; margin-bottom: 10px;">
+<input onkeyup="filterProducts('kids', this.value)" placeholder="🔍 ابحث عن منتج في قسم الأولاد" style="padding: 12px; width: 90%; max-width: 400px; border-radius: 8px; border: none; font-size: 1.1em; box-shadow: var(--shadow); color: #000;" type="text"/>
+</div>
+<h2>🧒 قسم ملابس الأولاد</h2>
+<div class="products" id="kidsProducts">
+<!-- المنتجات ستضاف هنا تلقائيا -->
+</div>
+</section>
+<!-- قسم الساعة -->
+<section class="section" id="clock">
+<h2>🕰️ الساعة ومواقيت الصلاة</h2>
+<div id="time">جارٍ تحميل الساعة...</div>
+</section>
+<!-- معرض الصور -->
+<div class="gallery-modal" id="galleryModal">
+<span class="gallery-close">×</span>
+<div class="gallery-counter" id="galleryCounter"></div>
+<div class="gallery-content">
+<img class="gallery-img" id="galleryImage" src=""/>
+<div class="gallery-desc" id="galleryDesc"></div>
+</div>
+<div class="gallery-nav">
+<button class="gallery-btn" id="prevBtn">❮</button>
+<button class="gallery-btn" id="nextBtn">❯</button>
+</div>
+</div>
+<!-- نموذج الفاتورة -->
+<div class="invoice-modal" id="invoiceModal">
+<div class="invoice-content">
+<span class="close-invoice">×</span>
+<div class="invoice-header">
+<h2>فاتورة شراء</h2>
+<p>متجر علي بابا أحمد الدكروري</p>
+<p id="invoiceDate"></p>
+<p id="invoiceNumber"></p>
+</div>
+<table class="invoice-table">
+<thead>
+<tr>
+<th>رقم المنتج</th>
+<th>اسم المنتج</th>
+<th>السعر</th>
+<th>الكمية</th>
+<th>المجموع</th>
+</tr>
+</thead>
+<tbody id="invoiceItems">
+<!-- عناصر الفاتورة تظهر هنا -->
+</tbody>
+</table>
+<div class="invoice-summary">
+<p>المجموع الكلي: <span id="invoiceTotal">0</span> جنيه</p>
+</div>
+<button class="print-invoice" onclick="printInvoice()">
+<span>🖨️</span> طباعة الفاتورة
       </button>
-    </div>
-  </div>
-
-  <!-- أزرار الفاتورة المحسنة -->
-  <div class="action-buttons">
-    <button class="action-button main" id="mainActionButton">
-      <span>⚙️</span>
-    </button>
-    <div class="action-menu">
-      <button class="action-button pdf" id="pdfBtn">
-        <span>📄</span> PDF
+</div>
+</div>
+<!-- أزرار الفاتورة المحسنة -->
+<div class="action-buttons">
+<button class="action-button main" id="mainActionButton">
+<span>⚙️</span>
+</button>
+<div class="action-menu">
+<button class="action-button pdf" id="pdfBtn">
+<span>📄</span> PDF
       </button>
-      <button class="action-button email" id="emailBtn">
-        <span>✉️</span> إيميل
+<button class="action-button email" id="emailBtn">
+<span>✉️</span> إيميل
       </button>
-      <button class="action-button whatsapp" id="whatsappBtn">
-        <span>💬</span> واتساب
+<button class="action-button whatsapp" id="whatsappBtn">
+<span>💬</span> واتساب
       </button>
-    </div>
-  </div>
-
-  <!-- تنبيه -->
-  <div class="alert" id="alert"></div>
-
-  <div class="footer">
+</div>
+</div>
+<!-- تنبيه -->
+<div class="alert" id="alert"></div>
+<div class="footer">
     جميع الحقوق محفوظة © متجر علي بابا أحمد الدكروري 2025
-    <br>
-    <section id="slide">
-      <div class="slide">
-        <div class="content">
-            <div class="contact-form-container">
-                <h2>تواصل معنا</h2>
-                <form id="contactForm" class="contact-form">
-                    <div class="form-group">
-                        <label for="name">الاسم الكامل</label>
-                        <input type="text" id="name" name="name" placeholder="أدخل اسمك الكامل" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">رقم الهاتف</label>
-                        <input type="tel" id="phone" name="phone" placeholder="أدخل رقم هاتفك" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="subject">الموضوع</label>
-<textarea id="subject" name="subject" placeholder="اكتب موضوع رسالتك هنا (حتى 100 كلمة)" maxlength="700" rows="4" required></textarea>
-                    </div> 
-                    <button type="submit" class="submit-btn">إرسال الرسالة <i class="fas fa-paper-plane"></i></button>
-                </form>
-            </div>
-        </div>
-        <div class="image-container">
-  </div>
-  </section>
-  </div>
+    <br/>
+<section id="slide">
+<div class="slide">
+<div class="content">
+<div class="contact-form-container">
+<h2 style="color:#ffeb3b; font-size:2em; margin-bottom:20px; text-shadow:1px 1px 3px #000;">📬 تواصل معنا</h2>
+<form class="contact-form" id="contactForm" style="background: linear-gradient(135deg, #3f51b5, #2196f3); padding: 30px; border-radius: 15px; color: white; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+<div class="form-group">
+<label for="name">الاسم الكامل</label>
+<input id="name" name="name" placeholder="أدخل اسمك الكامل" required="" style="width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: none; font-size: 1.1em;" type="text"/>
+</div>
+<div class="form-group">
+<label for="phone">رقم الهاتف</label>
+<input id="phone" name="phone" placeholder="أدخل رقم هاتفك" required="" style="width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: none; font-size: 1.1em;" type="tel"/>
+</div>
+<div class="form-group">
+<label for="subject">الموضوع</label>
+<textarea id="subject" maxlength="700" name="subject" placeholder="اكتب موضوع رسالتك هنا (حتى 100 كلمة)" required="" rows="4" style="width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: none; font-size: 1.1em;"></textarea>
+</div>
+<button class="submit-btn" style="background-color: #ffeb3b; color: #000; font-weight: bold; border: none; padding: 12px 25px; border-radius: 30px; cursor: pointer; font-size: 1.1em; transition: all 0.3s;" type="submit">📨 إرسال الرسالة</button>
+</form>
+</div>
+</div>
+<div class="image-container">
+</div>
+</div></section>
+</div>
+<script>
+  const clickSound = new Audio("https://www.fesliyanstudios.com/play-mp3/387");
+  document.querySelectorAll('button, a, input').forEach(el => {
+    el.addEventListener('mouseenter', () => clickSound.play());
+  });
 
-  <script>
     // متغيرات التطبيق
     let products = {
       men: [],
@@ -1548,7 +1546,17 @@ async function fetchProductsFromSheet() {
 document.addEventListener('DOMContentLoaded', fetchProductsFromSheet);
 
 
-// تهيئة التطبيق
+
+    function filterProducts(sectionId, query) {
+      const products = document.querySelectorAll(`#${sectionId}Products .product`);
+      query = query.toLowerCase();
+      products.forEach(product => {
+        const name = product.querySelector('h3').textContent.toLowerCase();
+        product.style.display = name.includes(query) ? 'block' : 'none';
+      });
+    }
+
+    // تهيئة التطبيق
     document.addEventListener('DOMContentLoaded', function() {
       // أحداث معرض الصور
       document.querySelector('.gallery-close').addEventListener('click', closeGallery);
