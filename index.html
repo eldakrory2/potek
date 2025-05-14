@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html dir="rtl" lang="ar">
 <head>
 <meta charset="utf-8"/>
@@ -69,7 +68,6 @@
       padding: 25px;
       border-top: 2px dashed var(--light-color);
       background-color: rgba(183, 28, 28, 0.1);
-      
     }
     
     .section h2 {
@@ -81,9 +79,8 @@
     }
     
     .products {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 20px;
       padding: 10px;
     }
@@ -92,7 +89,6 @@
       background-color: var(--primary-color);
       border-radius: 15px;
       padding: 15px;
-      width: 280px;
       text-align: center;
       position: relative;
       transition: all 0.3s;
@@ -181,7 +177,6 @@
       padding: 20px;
       border-radius: 15px;
       box-shadow: var(--shadow);
-      display: ;
     }
     
     .controls input, 
@@ -851,7 +846,7 @@
             transform: translateY(-3px);
             box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
-  </style>
+</style>
 </head>
 <body>
 <header>
@@ -1014,9 +1009,20 @@
 </div></section>
 </div>
 <script>
+  // تأثيرات صوتية لكل الأحداث
   const clickSound = new Audio("https://www.fesliyanstudios.com/play-mp3/387");
-  document.querySelectorAll('button, a, input').forEach(el => {
-    el.addEventListener('mouseenter', () => clickSound.play());
+  const addToCartSound = new Audio("https://www.fesliyanstudios.com/play-mp3/387");
+  const removeSound = new Audio("https://www.fesliyanstudios.com/play-mp3/387");
+  const successSound = new Audio("https://www.fesliyanstudios.com/play-mp3/387");
+  const errorSound = new Audio("https://www.fesliyanstudios.com/play-mp3/387");
+  const hoverSound = new Audio("https://www.fesliyanstudios.com/play-mp3/387");
+  
+  // تشغيل الصوت عند التمرير فوق العناصر
+  document.querySelectorAll('button, a, input, .product').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      hoverSound.currentTime = 0;
+      hoverSound.play();
+    });
   });
 
     // متغيرات التطبيق
@@ -1044,6 +1050,16 @@
       alert.className = 'alert';
       alert.classList.add(type === 'success' ? 'alert' : type === 'error' ? 'error' : 'warning');
       alert.style.display = 'block';
+      
+      // تشغيل الصوت المناسب
+      if (type === 'success') {
+        successSound.currentTime = 0;
+        successSound.play();
+      } else {
+        errorSound.currentTime = 0;
+        errorSound.play();
+      }
+      
       setTimeout(() => {
         alert.style.display = 'none';
       }, 3000);
@@ -1059,6 +1075,8 @@
       };
       localStorage.setItem('storeData', JSON.stringify(data));
       showAlert('تم حفظ جميع البيانات بنجاح', 'success');
+      clickSound.currentTime = 0;
+      clickSound.play();
     }
 
     // دالة لتحميل البيانات من localStorage
@@ -1074,6 +1092,8 @@
         renderAllProducts();
         updateCart();
         showAlert('تم استرجاع جميع البيانات بنجاح', 'success');
+        clickSound.currentTime = 0;
+        clickSound.play();
       } else {
         showAlert('لا توجد بيانات محفوظة', 'error');
       }
@@ -1181,6 +1201,8 @@
       document.getElementById(`productId${sectionId.charAt(0).toUpperCase() + sectionId.slice(1)}`).value = '';
       
       showAlert(`تم إضافة المنتج رقم ${productId} بنجاح`, 'success');
+      clickSound.currentTime = 0;
+      clickSound.play();
     }
 
     // دالة للبحث عن منتج بالاسم
@@ -1244,6 +1266,8 @@
       }
       
       searchIdInput.value = '';
+      clickSound.currentTime = 0;
+      clickSound.play();
     }
 
     // دالة لحذف جميع المنتجات
@@ -1252,6 +1276,8 @@
         products[sectionId] = [];
         renderProducts(sectionId);
         showAlert(`تم حذف جميع منتجات القسم بنجاح`, 'success');
+        clickSound.currentTime = 0;
+        clickSound.play();
       }
     }
 
@@ -1275,6 +1301,8 @@
       
       updateCart();
       showAlert(`تمت إضافة ${product.name} إلى السلة`, 'success');
+      addToCartSound.currentTime = 0;
+      addToCartSound.play();
     }
 
     // دالة لتحديث عرض السلة
@@ -1330,6 +1358,8 @@
       cart.splice(selectedIndex, 1);
       updateCart();
       showAlert(`تم حذف ${removedItem.name} من السلة`, 'success');
+      removeSound.currentTime = 0;
+      removeSound.play();
     }
 
     // دالة لعرض الفاتورة
@@ -1376,11 +1406,15 @@
       
       document.getElementById('invoiceModal').style.display = 'block';
       saveData(); // حفظ رقم الفاتورة الجديد
+      clickSound.currentTime = 0;
+      clickSound.play();
     }
 
     // دالة لطباعة الفاتورة
     function printInvoice() {
       window.print();
+      clickSound.currentTime = 0;
+      clickSound.play();
     }
 
     // دالة لحفظ الفاتورة كPDF
@@ -1391,6 +1425,8 @@
       setTimeout(() => {
         showAlert("تم حفظ الفاتورة كملف PDF بنجاح", 'success');
       }, 2000);
+      clickSound.currentTime = 0;
+      clickSound.play();
     }
 
     // دالة لإرسال الفاتورة بالبريد
@@ -1407,6 +1443,8 @@
       
       window.open(`mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`);
       showAlert("جارٍ فتح بريد الإرسال...", 'success');
+      clickSound.currentTime = 0;
+      clickSound.play();
     }
 
     // دالة لإرسال الفاتورة عبر واتساب
@@ -1423,11 +1461,15 @@
       // إرسال إلى أول رقم (يمكن تعديله ليعرض خيارات)
       window.open(`https://wa.me/2${numbers[0]}?text=${encodeURIComponent(message)}`);
       showAlert("جارٍ فتح واتساب...", 'success');
+      clickSound.currentTime = 0;
+      clickSound.play();
     }
 
     // دالة لإغلاق الفاتورة
     function closeInvoice() {
       document.getElementById('invoiceModal').style.display = 'none';
+      clickSound.currentTime = 0;
+      clickSound.play();
     }
 
     // دالة لعرض الساعة
@@ -1454,6 +1496,8 @@
       updateGallery();
       document.getElementById('galleryModal').style.display = 'block';
       document.body.style.overflow = 'hidden';
+      clickSound.currentTime = 0;
+      clickSound.play();
     }
 
     // دالة لتحديث معرض الصور
@@ -1474,21 +1518,26 @@
     function closeGallery() {
       document.getElementById('galleryModal').style.display = 'none';
       document.body.style.overflow = 'auto';
+      clickSound.currentTime = 0;
+      clickSound.play();
     }
 
     // دالة للصورة التالية
     function nextImage() {
       currentGallery.currentIndex = (currentGallery.currentIndex + 1) % currentGallery.images.length;
       updateGallery();
+      clickSound.currentTime = 0;
+      clickSound.play();
     }
 
     // دالة للصورة السابقة
     function prevImage() {
       currentGallery.currentIndex = (currentGallery.currentIndex - 1 + currentGallery.images.length) % currentGallery.images.length;
       updateGallery();
+      clickSound.currentTime = 0;
+      clickSound.play();
     }
 
-    
 // ID جدول جوجل شيت حقك
 const sheetUrl = 'https://docs.google.com/spreadsheets/d/1gW2opmwfpSshd6osRkTqhLqPoiTE7NztJvvj1zcZCzs/gviz/tq?tqx=out:json';
 
@@ -1536,6 +1585,8 @@ async function fetchProductsFromSheet() {
 
     renderAllProducts();
     showAlert('✅ تم تحميل المنتجات من Google Sheets بنجاح');
+    successSound.currentTime = 0;
+    successSound.play();
   } catch (err) {
     console.error(err);
     showAlert('❌ فشل تحميل المنتجات من Google Sheets', 'error');
@@ -1544,8 +1595,6 @@ async function fetchProductsFromSheet() {
 
 // تحميل البيانات عند بدء الصفحة
 document.addEventListener('DOMContentLoaded', fetchProductsFromSheet);
-
-
 
     function filterProducts(sectionId, query) {
       const products = document.querySelectorAll(`#${sectionId}Products .product`);
@@ -1596,6 +1645,8 @@ document.addEventListener('DOMContentLoaded', fetchProductsFromSheet);
         } else {
           cartContainer.style.display = 'block';
         }
+        clickSound.currentTime = 0;
+        clickSound.play();
       });
 
       // إغلاق سلة التسوق عند النقر خارجها
@@ -1652,12 +1703,16 @@ document.addEventListener('DOMContentLoaded', fetchProductsFromSheet);
             .then(result => {
                 alert("✅ تم إرسال رسالتك بنجاح!");
                 form.reset();
+                successSound.currentTime = 0;
+                successSound.play();
             })
             .catch(error => {
                 alert("❌ حدث خطأ أثناء الإرسال، حاول لاحقًا.");
                 console.error(error);
+                errorSound.currentTime = 0;
+                errorSound.play();
             });
         });
-  </script>
+</script>
 </body>
 </html>
